@@ -27,33 +27,33 @@
           }
           if (new Date(displayDate) < new Date()) {
             // check existing license
-            const pluginKey = "isas_plugin";
-            const subDomain = window.location.host;
+//            const pluginKey = "isas_plugin";
+//            const subDomain = window.location.host;
             // const contractId = "0001";
 
-            fetch("https://0q8o57r8si.execute-api.us-east-1.amazonaws.com/isRegisteredSubDomain?plugin_key=" + pluginKey + "&subdomain_url=" + subDomain, {
-              method: "GET",
-              headers: {
-                "X-Requested-With": "XMLHttpRequest",
-              },
-            })
-              .then(function (resp) {
-                resp.json().then(function (para) {
-                  switch (resp.status) {
-                    case 200:
-                      if (para !== "YES") {
+//            fetch("https://0q8o57r8si.execute-api.us-east-1.amazonaws.com/isRegisteredSubDomain?plugin_key=" + pluginKey + "&subdomain_url=" + subDomain, {
+//              method: "GET",
+//              headers: {
+//                "X-Requested-With": "XMLHttpRequest",
+//              },
+//            })
+//              .then(function (resp) {
+//                resp.json().then(function (para) {
+//                  switch (resp.status) {
+//                    case 200:
+//                      if (para !== "YES") {
                         // show dialog
-                        showDialog(jcsi);
-                      }
-                      break;
-                    default:
-                      console.log(resp);
-                  }
-                });
-              })
-              .catch(function (resp) {
-                console.log(resp);
-              });
+//                        showDialog(jcsi);
+//                      }
+//                      break;
+//                    default:
+//                      console.log(resp);
+//                  }
+//                });
+//              })
+//              .catch(function (resp) {
+//                console.log(resp);
+//              });
 
             // set displayed date( set tomorrow)
             let newDate = new Date();
@@ -76,7 +76,9 @@
   }
 
   kintone.events.off("app.record.index.show", window.csi_authorize_handler);
+  // kintone.events.off("mobile.app.record.index.show", window.csi_authorize_handler);
   kintone.events.on("app.record.index.show", window.csi_authorize_handler);
+  // kintone.events.on("mobile.app.record.index.show", window.csi_authorize_handler);
 })(jCsi);
 
 /* ---------------------------------------------------------------
